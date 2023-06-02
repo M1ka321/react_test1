@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MyButton from "./components/myButton";
+import Profile from "./components/profile";
+import Product from "./components/product";
+import product from "./components/product";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1> Мое первое приложение (нет)</h1>
+      <MyButton/>
+      <Profile/>
+      <ProductList products={Product}/>
     </div>
   );
 }
