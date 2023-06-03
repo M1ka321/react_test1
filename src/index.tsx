@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import MyButton from "./components/myButton";
+import MyButton from "./components/MyButton";
 import Profile from "./components/profile";
 
 const root = ReactDOM.createRoot(
