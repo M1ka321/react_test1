@@ -1,13 +1,14 @@
 interface MyButtonProps {
     children: string;
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
+    type?: "button" | "submit" | "reset"
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 
-const MyButton = ({children, onClick}:MyButtonProps) => {
+const MyButton = ({children, type = "button", onClick}:MyButtonProps) => {
 
     return (
-        <button onClick={onClick}>{children}</button>
+        <button type={type} onClick={onClick}>{children}</button>
     )
 }
 

@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {MyInput} from "./MyInput";
 import MyButton from "./MyButton";
-import {IProduct} from "./Product";
+import product, {IProduct} from "./Product";
 
 const initValue: IProduct = {
   id: 0,
@@ -11,19 +11,31 @@ const initValue: IProduct = {
   price: 0,
 }
 
+interface MyFormProps{
+  addProduct:(product:IProduct)=>void
+}
 
-export const MyForm = () => {
 
-  const [product, setProduct] = useState(initValue);
+export const MyForm = ({addProduct}:MyFormProps) => {
+
+  const [product, setProduct] = useState<IProduct>(initValue);
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    console.log(e.target.value)
+    setProduct({
+      ...product,
+      [e.target.name]:e.target.value,
+    })
+    console.log(product)
+  }
+  const handleSubmit :  React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+    addProduct(product)
   }
   return (
-    <form>
-      <MyInput handleChange={handleChange} name="name" value={product.name}/>
-      <MyInput handleChange={handleChange} name="count" value={product.count}/>
-      <MyInput handleChange={handleChange} name="price" value={product.price}/>
-      <MyButton onClick={()=>{}}>Добавить товар</MyButton>
+    <form onSubmit={handleSubmit}>
+      <MyInput type="text" handleChange={handleChange} name="name" value={product.name}/>
+      <MyInput type='number' handleChange={handleChange} name="count" value={product.count}/>
+      <MyInput type='number' handleChange={handleChange} name="price" value={product.price}/>
+      <MyButton type="submit">Добавить товар</MyButton>
     </form>
   )
 }

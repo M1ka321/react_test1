@@ -24,14 +24,7 @@ function App() {
       price: 200,
       inCart: true,
     },]
-  const handleClickOne = () => {
-  }
-  const showAlert = () => {
-    alert('Нажата кнопка 1')
-  }
-  const showAlert2 = () => {
-    alert('Нажата кнопка 2')
-  }
+
   const [count, setCount] = useState<number>(0)
   const onIncrement = () => {
     setCount(count + 1)
@@ -40,30 +33,18 @@ function App() {
     setCount(count - 1)
   }
 
-  const [productList, setProductList] = useState<IProduct[]>([])
+  const [productList, setProductList] = useState<IProduct[]>([{id:1, count:1, name:'gst', inCart:false, price: 10}])
 
   const addProduct = (product:IProduct) => {
-    setProductList([...productList])
+    setProductList([...productList, product])
   }
 
   return (
     <div>
       <MyForm/>
-      {/*<h1> Мое первое приложение (нет)</h1>*/}
-      {/*<Profile/>*/}
-      {/*<Counter*/}
-      {/*  count = {count}*/}
-      {/*  onIncrement={onIncrement}*/}
-      {/*  onDecrement={onDecrement}*/}
-      {/*/>*/}
-      {/*<Counter*/}
-      {/*  count = {count}*/}
-      {/*  onIncrement={onIncrement}*/}
-      {/*  onDecrement={onDecrement}*/}
-      {/*/>*/}
-      {/*<MyButton onClick={showAlert} >кнопка</MyButton>*/}
-      {/*<MyButton onClick={showAlert2} >кнопка</MyButton>*/}
-      {/*<ProductList products={products}/>*/}
+      <ProductList products={productList}/>
+      <Counter count={count} onIncrement={onIncrement} onDecrement={onDecrement}/>
+      <Counter count={count} onIncrement={onIncrement} onDecrement={onDecrement}/>
     </div>
   );
 }

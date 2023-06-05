@@ -1,17 +1,17 @@
-import {useState} from "react";
+
 
 interface MyInputProps{
   value: string | number;
   name : string;
-  type:  number;
+  type?:  'text' | 'number'
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export const MyInput = ( {value, name, handleChange} :MyInputProps) => {
+export const MyInput = ({value, name, type, handleChange} :MyInputProps) => {
+
   return (
     <div>
-      <div>{value}</div>
-      <input type="text" onChange={handleChange}/>
+      <input type={type} name={name} onChange={handleChange} value={value}/>
     </div>
   )
   }
